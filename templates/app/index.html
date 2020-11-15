@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html style='background-color: #3b444b;'>
+    <head>
+        <link rel='shortcut icon' href="{% static 'favicon.ico' %}" />
+        <link rel='stylesheet' href="{% static 'style.css' %}" /> 
+        <title>League of Stats</title>
+    </head>
+    <body>
+
+        <div class="Logo" align='center'>
+        <img src = 'https://upload.wikimedia.org/wikipedia/uk/e/e4/League_of_Legents_logo.png'
+         height='178px'
+        width='450px' ></img>
+        </div>
+        
+        <div class="Summoner" align='center'>
+            <form method='post'>
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="Summoner's name"/>
+                <select name='region' id='regions'>
+                    <option value='RU'>RU</option>
+                    <option value='EUW'>EUW</option>
+                </select>
+            <p></p>
+            <input type='submit' value='Search' />
+            </form>
+            <p></p>
+            <div class="Out">
+                {% if avatar %}
+                <img class='avatar' src= '{{ avatar }}' width='100px' height="100px" >
+                {% endif %}
+                <p></p>
+                {% if name %}
+                Name: {{ name }}
+                {% endif %}
+                <p></p>
+                {% if level %}
+                Level: {{ level }}
+                {% endif %}
+            </div>
+        </div>
+    </body>
+</html>
