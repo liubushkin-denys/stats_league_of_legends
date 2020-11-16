@@ -25,14 +25,16 @@ def index(request):
                 name = data['name']
                 level = data['level']
                 avatar = data['avatar']
-                context = {
-                    'name': name,
-                    'level': level,
-                    'avatar': avatar,
-                }
             except:
-                print('No such user')
-
+                name = 'Summoner not found'
+                level = '?'
+                avatar = '../static/moai.jpg'
+            context = {
+                'name': name,
+                'level': level,
+                'avatar': avatar,
+                'region': region,
+            }
         return HttpResponse(template.render(context, request))
     else:
         return HttpResponse(template.render(context, request))
