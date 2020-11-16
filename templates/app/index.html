@@ -8,14 +8,16 @@
     </head>
     <body>
 
-        <div class='nav' style='display: flex; flex-direction: row; height: 50px; align-items: center; overflow: hidden;'>
-            <div class='Logo'>
-                <img src="{% static 'logo.png' %}" height='50px' width='200px'>
+        <nav class='topbar' data-topbar role="navigation" style='display: flex; flex-direction: row;
+         position: fixed; top: 0px; left: 0px; right: 0px; height: 60px;'>
+            <div class='Logo' style='position: fixed; left: 0.3vw; top: 0.2vw;'>
+                <img src="{% static 'logo.png' %}" height='50px' width='50px;'>
 
             </div>
             
             <div class="input" style='position: fixed;
             left: 40.3vw;
+            top: 1vw;
             transform: translateX(-40%, -40%);'>
                 <form method='post'>
                     {% csrf_token %}
@@ -27,12 +29,13 @@
                 <input type='submit' value='Search' />
                 </form>
             </div>
-        </div>
+        </nav>
         
             <p></p>
             {% if avatar %}
             <div class="Out" style='display: flex; flex-direction: row;
             position: fixed;
+            top: 8%;
             left: 20vw;
             right: 20vw;
             transform: translateX(-40%, -40%); 
@@ -53,6 +56,11 @@
                 <div class="level" style='font-size: 20px;'>Level {{ level }}</div>
                 {% endif %}
                 </div>
+            </div>
+
+            <div class="rank">
+                {{ rank }}
+
             </div>
     </body>
 </html>
